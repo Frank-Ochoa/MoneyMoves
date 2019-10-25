@@ -8,4 +8,25 @@
     tools:context=".IncomePage"
     tools:showIn="@layout/activity_income_page">
 
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="251dp"
+        android:layout_height="28dp"
+        android:layout_marginStart="74dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="74dp"
+        android:text="Please enter your income:"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Spinner
+        android:id="@+id/spinner1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:drawable/btn_dropdown"
+        android:spinnerMode="dropdown"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="109dp"
+        android:entries="@array/array_frequency"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
