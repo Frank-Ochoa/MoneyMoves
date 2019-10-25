@@ -6,4 +6,21 @@
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".MainActivity"
-    tools:showIn="@layout/activity_main"/>
+    tools:showIn="@layout/activity_main">
+
+    <Button
+        android:id="@+id/1a"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="1a"
+        tools:layout_editor_absoluteX="156dp"
+        tools:layout_editor_absoluteY="145dp" />
+
+    <Button
+        android:id="@+id/1b"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="1b"
+        tools:layout_editor_absoluteX="154dp"
+        tools:layout_editor_absoluteY="272dp" />
+</androidx.constraintlayout.widget.ConstraintLayout>
