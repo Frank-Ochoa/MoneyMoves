@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    public void incomePage(){
+    public void incomePage(View view){
         Intent intent = new Intent(this, IncomePage.class); //an action something thats going to happen
         startActivity(intent);
     }
