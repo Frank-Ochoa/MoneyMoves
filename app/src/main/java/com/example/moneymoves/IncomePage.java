@@ -1,5 +1,6 @@
 package com.example.moneymoves;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -27,6 +28,11 @@ public class IncomePage extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+    }
+
+    public void expensePage(View view){
+        Intent intent = new Intent(this, ExpensesPage.class); //an action something thats going to happen
+        startActivity(intent);
     }
 
 }
