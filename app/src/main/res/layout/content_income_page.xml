@@ -21,12 +21,27 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Spinner
-        android:id="@+id/spinner1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:id="@+id/frequency"
+        android:layout_width="126dp"
+        android:layout_height="31dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="50dp"
         android:background="@android:drawable/btn_dropdown"
+        android:entries="@array/array_frequency"
         android:spinnerMode="dropdown"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="109dp"
-        android:entries="@array/array_frequency"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <EditText
+        android:id="@+id/income"
+        android:layout_width="126dp"
+        android:layout_height="31dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="50dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Name"
+        app:layout_constraintStart_toEndOf="@+id/frequency"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
