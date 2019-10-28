@@ -12,7 +12,7 @@ public class MMDatabase extends SQLiteOpenHelper
     public static final String INCOME = "income";
     private static final String CREATE_INCOME_TABLE =
             "create table Income ("+
-                    INCOME + " REAL, pimary"+
+                    INCOME + " Real, pimary"+
                     ")";
 
     public static final String TEMP_CATEGORY = "category";
@@ -22,7 +22,7 @@ public class MMDatabase extends SQLiteOpenHelper
             "create table TEMP_EXPENSES ("+
                     TEMP_CATEGORY + " Text," +
                     TEMP_NAME + " Text," +
-                    TEMP_AMOUNT + " REAL" +
+                    TEMP_AMOUNT + " Real" +
                     ")";
 
     public static final String PERSISTENT_CATEGORY = "category";
@@ -32,7 +32,7 @@ public class MMDatabase extends SQLiteOpenHelper
             "create table PERSISTENT_EXPENSES ("+
                     PERSISTENT_CATEGORY + " Text," +
                     PERSISTENT_NAME + " Text," +
-                    PERSISTENT_AMOUNT + " REAL" +
+                    PERSISTENT_AMOUNT + " Real" +
                     ")";
 
     public static final String MONTH_NAME = "month";
@@ -40,7 +40,7 @@ public class MMDatabase extends SQLiteOpenHelper
     private static final String CREATE_MONTHLYRECORD_TABLE =
             "create table MONTHLY_RECORD (" +
                     MONTH_NAME + " Text," +
-                    MONTHLY_AMOUNT + " Amount" +
+                    MONTHLY_AMOUNT + " Real" +
                     ")";
 
     public static final int DATABASE_VERSION = 1;
