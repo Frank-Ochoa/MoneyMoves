@@ -15,24 +15,21 @@ public class MMDatabase extends SQLiteOpenHelper
                     INCOME + " Real, pimary"+
                     ")";
 
-    public static final String TEMP_CATEGORY = "category";
-    public static final String TEMP_NAME = "name";
-    public static final String TEMP_AMOUNT = "amount";
-    private static final String CREATE_TEMPEXPENSE_TABLE =
-            "create table TEMP_EXPENSES ("+
-                    TEMP_CATEGORY + " Text," +
-                    TEMP_NAME + " Text," +
-                    TEMP_AMOUNT + " Real" +
+
+    public static final String CATEGORY = "category";
+    public static final String NAME = "name";
+    public static final String AMOUNT = "amount";
+    private static final String CREATE_MONTHLYSPENT_TABLE =
+            "create table PERSISTENT_EXPENSES ("+
+                    CATEGORY + " Text," +
+                    NAME + " Text," +
+                    AMOUNT + " Real" +
                     ")";
 
-    public static final String PERSISTENT_CATEGORY = "category";
-    public static final String PERSISTENT_NAME = "name";
-    public static final String PERSISTENT_AMOUNT = "amount";
-    private static final String CREATE_PERSISTENTEXPENSE_TABLE =
-            "create table PERSISTENT_EXPENSES ("+
-                    PERSISTENT_CATEGORY + " Text," +
-                    PERSISTENT_NAME + " Text," +
-                    PERSISTENT_AMOUNT + " Real" +
+    private static final String CREATE_BUDGETTEMPLATE_TABLE =
+            "create table BUDGET_TEMPLATE (" +
+                    CATEGORY + " Text," +
+                    AMOUNT + " Text" +
                     ")";
 
     public static final String MONTH_NAME = "month";
@@ -53,8 +50,8 @@ public class MMDatabase extends SQLiteOpenHelper
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(CREATE_INCOME_TABLE);
-        db.execSQL(CREATE_TEMPEXPENSE_TABLE);
-        db.execSQL(CREATE_PERSISTENTEXPENSE_TABLE);
+        db.execSQL(CREATE_BUDGETTEMPLATE_TABLE);
+        db.execSQL(CREATE_MONTHLYSPENT_TABLE);
         db.execSQL(CREATE_MONTHLYRECORD_TABLE);
     }
 
