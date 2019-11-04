@@ -13,4 +13,5 @@
         <item>Biweekly</item>
         <item>Monthly</item>
     </string-array>
+    <string name="title_activity_addexpense">addexpense</string>
 </resources>

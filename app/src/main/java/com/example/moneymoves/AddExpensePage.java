@@ -1,6 +1,5 @@
 package com.example.moneymoves;
 
-import android.content.Intent;
 import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -11,21 +10,23 @@ import androidx.appcompat.widget.Toolbar;
 
 import android.view.View;
 
-public class ExpensesPage extends AppCompatActivity {
+public class AddExpensePage extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_expenses_page);
+        setContentView(R.layout.activity_add_expense);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-
-    }
-
-    public void addExpensePage(View view){
-        Intent intent = new Intent(this,AddExpensePage.class);
-        startActivity(intent);
+        FloatingActionButton fab = findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
+            }
+        });
     }
 
 }

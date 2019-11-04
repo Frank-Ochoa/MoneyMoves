@@ -10,9 +10,13 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".AddExpensePage"
+            android:label="@string/title_activity_addexpense"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
             android:name=".ExpensesPage"
             android:label="@string/title_activity_expenses_page"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".IncomePage"
             android:label="@string/title_activity_income_page"
