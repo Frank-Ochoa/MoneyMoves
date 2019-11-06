@@ -28,7 +28,6 @@ public class ExpensesPage extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         adapter = new MoneyAdapter(this);
         recyclerView.setAdapter(adapter);
-
     }
 
     public void addExpensePage(View view){
