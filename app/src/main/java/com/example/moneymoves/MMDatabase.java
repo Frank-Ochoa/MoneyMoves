@@ -152,6 +152,18 @@ public class MMDatabase extends SQLiteOpenHelper
         db.insert(MONTHLY_RECORD_TABLE, null, values);
     }
 
+    public void removeRowFromTable(String tableName, String where, int id)
+    {
+        Log.i(TAG, "REMOVED ROW " + id);
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        //db.execSQL("DELETE FROM " + tableName + " WHERE ? = ?", new String[]{where, String.valueOf(id)});
+        db.execSQL("DELETE FROM " + tableName + " WHERE " + BUDGET_ID + " = " + id);
+
+        // This is a little wonky, might try and figure out how to do this better, necessary for adapter though
+        db.execSQL("UPDATE " + tableName + " SET " + BUDGET_ID + " = " + BUDGET_ID + " - 1" + " WHERE " + BUDGET_ID + " != 1");
+    }
+
     public Cursor getBudgetRow(int id)
     {
         SQLiteDatabase db = this.getReadableDatabase();
@@ -160,6 +172,7 @@ public class MMDatabase extends SQLiteOpenHelper
         return db.rawQuery("SELECT " + CATEGORY + ", " + AMOUNT + " FROM " + BUDGET_TEMPLATE_TABLE +
                 " WHERE " + BUDGET_ID + " = ?",  new String[]{String.valueOf(id)});
     }
+
 
     public int getNumEntries(String tableName)
     {

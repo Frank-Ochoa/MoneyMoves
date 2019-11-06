@@ -2,7 +2,6 @@ package com.example.moneymoves;
 
 import android.content.Context;
 import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -59,11 +58,11 @@ public class MoneyAdapter extends RecyclerView.Adapter<MoneyAdapter.ViewHolder>
 			deleteButton = itemView.findViewById(R.id.deleteButton);
 		}
 
-		void bindData(int id)
+		void bindData(final int id)
 		{
-			System.out.println("BINDING DATA");
+			Log.i(TAG, "ID IS : " + id);
 			// Will query DB based on a unique ID that we have in the table now
-			Cursor cursor = dbHelper.getBudgetRow(id);
+			final Cursor cursor = dbHelper.getBudgetRow(id);
 			cursor.moveToNext();
 
 			expenseName.setText(cursor.getString(cursor.getColumnIndex(MMDatabase.CATEGORY)));
@@ -71,8 +70,23 @@ public class MoneyAdapter extends RecyclerView.Adapter<MoneyAdapter.ViewHolder>
 
             expenseAmount.setText(cursor.getString(cursor.getColumnIndex(MMDatabase.AMOUNT)));
 			expenseAmount.setTextColor(Color.BLUE);
+			deleteButton.setOnClickListener(new View.OnClickListener()
+			{
+				@Override public void onClick(View view)
+				{
+					// Remove row from Table
+					dbHelper.removeRowFromTable(MMDatabase.BUDGET_TEMPLATE_TABLE, MMDatabase.BUDGET_ID, id);
+
+					// Remove the view
+					MoneyAdapter.this.notifyItemRemoved(id - 1);
+					MoneyAdapter.this.notifyItemRangeChanged(id - 1, getItemCount());
+
+				}
+			});
 
 			cursor.close();
+
 		}
 	}
+
 }

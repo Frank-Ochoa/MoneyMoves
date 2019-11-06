@@ -1,14 +1,13 @@
 package com.example.moneymoves;
 
 import android.os.Bundle;
-
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
+import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
-import android.view.View;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.snackbar.Snackbar;
 
 public class AddExpensePage extends AppCompatActivity {
 
@@ -28,5 +27,4 @@ public class AddExpensePage extends AppCompatActivity {
             }
         });
     }
-
 }
