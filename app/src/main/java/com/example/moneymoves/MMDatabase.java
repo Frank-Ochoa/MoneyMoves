@@ -161,7 +161,9 @@ public class MMDatabase extends SQLiteOpenHelper
         db.execSQL("DELETE FROM " + tableName + " WHERE " + BUDGET_ID + " = " + id);
 
         // This is a little wonky, might try and figure out how to do this better, necessary for adapter though
-        db.execSQL("UPDATE " + tableName + " SET " + BUDGET_ID + " = " + BUDGET_ID + " - 1" + " WHERE " + BUDGET_ID + " != 1");
+        db.execSQL("UPDATE " + tableName + " SET " + BUDGET_ID + " = " + BUDGET_ID + " - 1" + " WHERE " + BUDGET_ID + " != 1 AND " + BUDGET_ID + " > " + id);
+        //TODO: Buggy for when deleting all elements and then going back and tryin to populate view, seems like sequnce isn't right
+        db.execSQL("UPDATE SQLITE_SEQUENCE SET SEQ = " + (getNumEntries(tableName)) + " WHERE NAME = " + " \" " + tableName + " \" ");
     }
 
     public Cursor getBudgetRow(int id)
