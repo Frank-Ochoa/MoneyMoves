@@ -25,15 +25,10 @@ public class MainActivity extends AppCompatActivity
 
 		MMDatabase dbHelper = new MMDatabase(this);
 		// There are methods for inserting every kind of row into every kind of table
-//		dbHelper.insertBudgetRow("PRAISE", 1337);
-//		dbHelper.insertBudgetRow("ME", 69);
-//		dbHelper.insertBudgetRow("I", 420);
-//		dbHelper.insertBudgetRow("ROCK", 1);
-// dbHelper.insertBudgetRow("FRANK SUCKS", 0);
 
 		// Uncomment these to play around with values in the tables and nuke them afterwards
-//		dbHelper.nukeAllTables();
-//		dbHelper.reAddExistingTables();
+		dbHelper.nukeAllTables();
+		dbHelper.reAddExistingTables();
 
 		FloatingActionButton fab = findViewById(R.id.fab);
 		fab.setOnClickListener(new View.OnClickListener()
