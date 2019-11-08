@@ -11,6 +11,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.View;
 
 public class ExpensesPage extends AppCompatActivity {
@@ -23,6 +24,7 @@ public class ExpensesPage extends AppCompatActivity {
         setContentView(R.layout.activity_expenses_page);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        Log.i("EXPENSE PAGE", "ON CREATE");
 
         RecyclerView recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));

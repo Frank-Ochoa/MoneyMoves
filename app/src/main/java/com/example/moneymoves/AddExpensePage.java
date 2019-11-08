@@ -35,6 +35,8 @@ public class AddExpensePage extends AppCompatActivity {
         MMDatabase dbHelper = new MMDatabase(this);
         dbHelper.insertBudgetRow("added expense", 123);
         Intent intent = new Intent(this, ExpensesPage.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        //this flag will destroy the previous expense activity
         startActivity(intent);
     }
 }
