@@ -1,4 +1,4 @@
-package com.example.moneymoves;
+package com.example.moneymoves.Adapters;
 
 import android.content.Context;
 import android.database.Cursor;
@@ -13,6 +13,9 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.moneymoves.Database.MMDatabase;
+import com.example.moneymoves.R;
 
 public class MoneyAdapter extends RecyclerView.Adapter<MoneyAdapter.ViewHolder>
 {

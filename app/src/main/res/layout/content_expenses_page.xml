@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context=".ExpensesPage"
+    tools:context=".Pages.ExpensesPage"
     tools:showIn="@layout/activity_expenses_page">
 
     <androidx.recyclerview.widget.RecyclerView

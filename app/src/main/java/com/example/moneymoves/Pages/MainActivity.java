@@ -1,7 +1,6 @@
-package com.example.moneymoves;
+package com.example.moneymoves.Pages;
 
 import android.content.Intent;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -10,6 +9,7 @@ import android.view.View;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import com.example.moneymoves.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
@@ -22,13 +22,6 @@ public class MainActivity extends AppCompatActivity
 		setContentView(R.layout.activity_main);
 		Toolbar toolbar = findViewById(R.id.toolbar);
 		setSupportActionBar(toolbar);
-
-		MMDatabase dbHelper = new MMDatabase(this);
-		// There are methods for inserting every kind of row into every kind of table
-
-		// Uncomment these to play around with values in the tables and nuke them afterwards
-		dbHelper.nukeAllTables();
-		dbHelper.reAddExistingTables();
 
 		FloatingActionButton fab = findViewById(R.id.fab);
 		fab.setOnClickListener(new View.OnClickListener()

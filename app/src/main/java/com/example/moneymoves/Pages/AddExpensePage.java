@@ -1,19 +1,21 @@
-package com.example.moneymoves;
+package com.example.moneymoves.Pages;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
-
-import java.util.zip.Inflater;
+import com.example.moneymoves.R;
 
 public class AddExpensePage extends AppCompatActivity {
+
+    public static final String EXTRA_CATEGORY = "CATEGORY";
+    public static final String EXTRA_AMOUNT = "AMOUNT";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,14 +38,21 @@ public class AddExpensePage extends AppCompatActivity {
         TextView categoryTV = findViewById(R.id.expenseCategory);
         String category = categoryTV.getText().toString();
 
-        TextView amountTV = findViewById(R.id.budgetAmount);
-        int amount = Integer.valueOf(amountTV.getText().toString());
+        EditText amountTV = findViewById(R.id.budgetAmount);
+        double amount = Double.valueOf(amountTV.getText().toString());
 
-        MMDatabase dbHelper = new MMDatabase(this);
+        Intent data = new Intent();
+        data.putExtra(EXTRA_CATEGORY, category);
+        data.putExtra(EXTRA_AMOUNT, amount);
+
+        setResult(RESULT_OK, data);
+        finish();
+
+       /* MMDatabase dbHelper = new MMDatabase(this);
         dbHelper.insertBudgetRow(category, amount);
         Intent intent = new Intent(this, ExpensesPage.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         //this flag will destroy the previous expense activity
-        startActivity(intent);
+        startActivity(intent);*/
     }
 }
