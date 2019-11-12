@@ -5,11 +5,13 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -60,6 +62,24 @@ public class ExpensesPage extends AppCompatActivity
 				adapter.setBudgets(budgetTemplates);
 			}
 		});
+
+		new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(0,
+				ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT)
+		{
+			@Override public boolean onMove(@NonNull RecyclerView recyclerView,
+					@NonNull RecyclerView.ViewHolder viewHolder,
+					@NonNull RecyclerView.ViewHolder target)
+			{
+				return false;
+			}
+
+			@Override public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder,
+					int direction)
+			{
+				budgetTemplateViewModel.deleteBudget(adapter.getBudget(viewHolder.getAdapterPosition()));
+				Toast.makeText(ExpensesPage.this, "Budget Deleted", Toast.LENGTH_SHORT);
+			}
+		}).attachToRecyclerView(recyclerView);
 	}
 
 	@Override protected void onActivityResult(int requestCode, int resultCode,

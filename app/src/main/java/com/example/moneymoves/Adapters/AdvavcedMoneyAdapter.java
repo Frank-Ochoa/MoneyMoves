@@ -46,6 +46,11 @@ public class AdvavcedMoneyAdapter extends RecyclerView.Adapter<AdvavcedMoneyAdap
 		notifyDataSetChanged();
 	}
 
+	public BudgetTemplate getBudget(int position)
+	{
+		return budgets.get(position);
+	}
+
 	class BudgetHolder extends RecyclerView.ViewHolder
 	{
 		private TextView category;
