@@ -27,6 +27,7 @@ public class ExpensesPage extends AppCompatActivity
 {
 
 	public static final int ADD_BUDGET_REQUEST = 1;
+	public static final int EDIT_BUDGET_REQUEST = 2;
 	AdvavcedMoneyAdapter adapter;
 	private BudgetTemplateViewModel budgetTemplateViewModel;
 
@@ -80,6 +81,17 @@ public class ExpensesPage extends AppCompatActivity
 				Toast.makeText(ExpensesPage.this, "Budget Deleted", Toast.LENGTH_SHORT);
 			}
 		}).attachToRecyclerView(recyclerView);
+
+		adapter.setOnItemClickListener(new AdvavcedMoneyAdapter.OnItemClickListener() {
+			@Override
+			public void onItemClickListener(BudgetTemplate budget) {
+				Intent intent = new Intent(ExpensesPage.this, AddExpensePage.class);
+				intent.putExtra(AddExpensePage.EXTRA_ID, budget.getId());
+				intent.putExtra(AddExpensePage.EXTRA_CATEGORY, budget.getCategory());
+				intent.putExtra(AddExpensePage.EXTRA_AMOUNT, budget.getAmount());
+				startActivityForResult(intent,EDIT_BUDGET_REQUEST);
+			}
+		});
 	}
 
 	@Override protected void onActivityResult(int requestCode, int resultCode,
@@ -96,6 +108,20 @@ public class ExpensesPage extends AppCompatActivity
 			budgetTemplateViewModel.insertBudget(budgetTemplate);
 
 			Toast.makeText(this, "Budget Saved", Toast.LENGTH_SHORT).show();
+		}
+		else if(requestCode == EDIT_BUDGET_REQUEST && resultCode == RESULT_OK){
+			int id = data.getIntExtra(AddExpensePage.EXTRA_ID,-1);
+			if(id == -1){
+				Toast.makeText(this, "Update Failed", Toast.LENGTH_SHORT).show();
+				return;
+			}
+			String category = data.getStringExtra(AddExpensePage.EXTRA_CATEGORY);
+			double amount = data.getDoubleExtra(AddExpensePage.EXTRA_AMOUNT, 0.0);
+			BudgetTemplate budgetTemplate = new BudgetTemplate(category, amount);
+			budgetTemplate.setId(id);
+			budgetTemplateViewModel.updateBudget(budgetTemplate);
+
+			Toast.makeText(this, "Budget Updated", Toast.LENGTH_SHORT).show();
 		}
 		else
 		{

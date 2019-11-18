@@ -18,6 +18,7 @@ import java.util.List;
 public class AdvavcedMoneyAdapter extends RecyclerView.Adapter<AdvavcedMoneyAdapter.BudgetHolder>
 {
 	private List<BudgetTemplate> budgets = new ArrayList<>();
+	private OnItemClickListener listener;
 
 	@NonNull @Override public BudgetHolder onCreateViewHolder(@NonNull ViewGroup parent,
 			int viewType)
@@ -60,7 +61,27 @@ public class AdvavcedMoneyAdapter extends RecyclerView.Adapter<AdvavcedMoneyAdap
 		{
 			super(itemView);
 			category = itemView.findViewById(R.id.budgetCategory);
-			amount = itemView.findViewById(R.id.budgetAmount);
+			amount = itemView.findViewById(R.id.expenseAmount);
+
+			itemView.setOnClickListener(new View.OnClickListener(){
+				@Override
+				public void onClick(View v){
+					int position = getAdapterPosition();
+					//make sure the listener has been created
+					//make sure that a deleted item isnt clicked before the row has been removed
+					if(listener != null && position != RecyclerView.NO_POSITION) {
+						listener.onItemClickListener(budgets.get(position));
+					}
+				}
+			});
 		}
+	}
+
+	public interface OnItemClickListener{
+		void onItemClickListener(BudgetTemplate budget); //passing in the budget that we want to update
+	}
+
+	public void setOnItemClickListener(OnItemClickListener listener){
+		this.listener = listener;
 	}
 }
