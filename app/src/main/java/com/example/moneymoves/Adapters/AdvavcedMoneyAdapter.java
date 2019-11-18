@@ -55,7 +55,7 @@ public class AdvavcedMoneyAdapter extends RecyclerView.Adapter<AdvavcedMoneyAdap
 	class BudgetHolder extends RecyclerView.ViewHolder
 	{
 		private TextView category;
-		private EditText amount;
+		private TextView amount;
 
 		public BudgetHolder(@NonNull View itemView)
 		{
