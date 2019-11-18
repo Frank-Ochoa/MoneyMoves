@@ -1,6 +1,7 @@
 package com.example.moneymoves.Pages;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -19,19 +20,21 @@ public class MainActivity extends AppCompatActivity
 	@Override protected void onCreate(Bundle savedInstanceState)
 	{
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_main);
-		Toolbar toolbar = findViewById(R.id.toolbar);
-		setSupportActionBar(toolbar);
+		SharedPreferences pref = getSharedPreferences("prefs",MODE_PRIVATE);
+		boolean flag = pref.getBoolean("firstStart",true);
+	if(flag){
+		Intent intent = new Intent(this,
+				IncomePage.class); //an action something thats going to happen
+		startActivity(intent);
+	}
+	else{
+		//sub for main page
+		Intent intent = new Intent(this,
+				AddExpensePage.class); //an action something thats going to happen
+		startActivity(intent);
+	}
 
-		FloatingActionButton fab = findViewById(R.id.fab);
-		fab.setOnClickListener(new View.OnClickListener()
-		{
-			@Override public void onClick(View view)
-			{
-				Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-						.setAction("Action", null).show();
-			}
-		});
+
 	}
 
 	public void incomePage(View view)
