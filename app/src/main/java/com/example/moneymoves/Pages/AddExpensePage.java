@@ -2,7 +2,6 @@ package com.example.moneymoves.Pages;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -31,12 +30,12 @@ public class AddExpensePage extends AppCompatActivity {
 		Intent intent = getIntent();
 
 		if(intent.hasExtra(EXTRA_ID)){
-			setTitle("Edit Note");
+			setTitle("Edit Budget");
 			categoryTextView.setText(intent.getStringExtra(EXTRA_CATEGORY));
 			amountTextView.setText(String.valueOf(intent.getDoubleExtra(EXTRA_AMOUNT, -1)));
 		}
 		else{
-			setTitle("Add Node");
+			setTitle("Add Budget");
 		}
 	}
 
