@@ -1,6 +1,7 @@
 package com.example.moneymoves.Pages;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 
@@ -31,6 +32,10 @@ public class IncomePage extends AppCompatActivity {
     }
 
     public void expensePage(View view){
+        SharedPreferences pref = getSharedPreferences("prefs",MODE_PRIVATE);
+        SharedPreferences.Editor editor = pref.edit();
+        editor.putBoolean("firstStart",false);
+        editor.apply();
         Intent intent = new Intent(this, ExpensesPage.class); //an action something thats going to happen
         startActivity(intent);
     }

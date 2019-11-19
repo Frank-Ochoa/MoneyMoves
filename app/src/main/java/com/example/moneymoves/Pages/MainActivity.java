@@ -23,8 +23,7 @@ public class MainActivity extends AppCompatActivity
 		SharedPreferences pref = getSharedPreferences("prefs",MODE_PRIVATE);
 		boolean flag = pref.getBoolean("firstStart",true);
 	if(flag){
-		Intent intent = new Intent(this,
-				IncomePage.class); //an action something thats going to happen
+		Intent intent = new Intent(this, IncomePage.class);
 		startActivity(intent);
 	}
 	else{
