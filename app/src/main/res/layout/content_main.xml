@@ -5,13 +5,27 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context=".MainActivity"
+    tools:context=".Pages.MainActivity"
     tools:showIn="@layout/activity_main">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:layout_width="310dp"
-        android:layout_height="470dp"
+        android:layout_width="328dp"
+        android:layout_height="440dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="100dp"
+        android:layout_marginEnd="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/addExpenseButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="100dp"
+        android:layout_marginEnd="100dp"
+        android:text="Add Expense"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="581dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>
