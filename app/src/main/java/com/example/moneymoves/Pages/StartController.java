@@ -14,7 +14,7 @@ import com.example.moneymoves.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
-public class MainActivity extends AppCompatActivity
+public class StartController extends AppCompatActivity
 {
 
 	@Override protected void onCreate(Bundle savedInstanceState)

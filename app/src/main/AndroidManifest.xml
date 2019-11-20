@@ -10,10 +10,14 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".MainActivity"
+            android:label="@string/title_activity_main"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
             android:name=".Pages.AddExpensePage"
             android:label="@string/title_activity_addexpense"
             android:parentActivityName=".Pages.ExpensesPage"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Pages.ExpensesPage"
             android:label="@string/title_activity_expenses_page"
@@ -24,7 +28,7 @@
             android:label="@string/title_activity_income_page"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".Pages.MainActivity"
+            android:name=".Pages.StartController"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
