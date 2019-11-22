@@ -49,7 +49,11 @@ public class ExpensesPage extends AppCompatActivity
 		});
 
 		RecyclerView recyclerView = findViewById(R.id.recyclerView);
-		recyclerView.setLayoutManager(new LinearLayoutManager(this));
+		LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+		layoutManager.setOrientation(RecyclerView.VERTICAL);
+
+		recyclerView.setLayoutManager(layoutManager);
+		recyclerView.setHasFixedSize(true);
 		adapter = new AdvavcedMoneyAdapter();
 		recyclerView.setAdapter(adapter);
 
