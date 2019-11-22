@@ -8,11 +8,8 @@ import android.view.MenuItem;
 import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 
 import com.example.moneymoves.R;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
 
 public class StartController extends AppCompatActivity
 {
@@ -29,7 +26,7 @@ public class StartController extends AppCompatActivity
 	else{
 		//sub for main page
 		Intent intent = new Intent(this,
-				AddExpensePage.class); //an action something thats going to happen
+				ExpensesPage.class); //an action something thats going to happen
 		startActivity(intent);
 	}
 
