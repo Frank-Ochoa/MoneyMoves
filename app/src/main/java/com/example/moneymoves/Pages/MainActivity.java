@@ -54,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
                 for(BudgetTemplate temp : budgetTemplates)
                 {
                     final String cat = temp.getCategory();
-                   mainViewModel.getSumAmountOfCategory(cat).observe(mainInstance, new Observer<Double>() {
+                    mainViewModel.getSumAmountOfCategory(cat).observe(mainInstance, new Observer<Double>() {
                        @Override
                        public void onChanged(Double aDouble) {
                            adapter.setSpentSums(cat, aDouble);
