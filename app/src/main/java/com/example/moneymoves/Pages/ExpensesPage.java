@@ -139,4 +139,10 @@ public class ExpensesPage extends AppCompatActivity
 		startActivity(intent);
 	}
 
+	public void mainPage(View view)
+	{
+		Intent intent = new Intent(this, MainActivity.class);
+		startActivity(intent);
+	}
+
 }
