@@ -23,26 +23,6 @@ public class MainActivityViewModel  extends AndroidViewModel
         allBudgets = repository.getAllBudgets();
     }
 
-    public void insertBudget(BudgetTemplate budgetTemplate)
-    {
-        repository.insertBudget(budgetTemplate);
-    }
-
-    public void updateBudget(BudgetTemplate budgetTemplate)
-    {
-        repository.updateBudget(budgetTemplate);
-    }
-
-    public void deleteBudget(BudgetTemplate budgetTemplate)
-    {
-        repository.deleteBudget(budgetTemplate);
-    }
-
-    public void deleteAllBudgets()
-    {
-        repository.deleteAllBudgets();
-    }
-
     public LiveData<List<BudgetTemplate>> getAllBudgets()
     {
         return allBudgets;

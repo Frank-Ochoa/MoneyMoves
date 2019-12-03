@@ -1,5 +1,6 @@
 package com.example.moneymoves.Pages;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.example.moneymoves.Adapters.AdvavcedMoneyAdapter;
@@ -42,7 +43,6 @@ public class MainActivity extends AppCompatActivity {
         adapter = new MonthlySpentAdapter();
         recyclerView.setAdapter(adapter);
 
-        // Destroys when finished
         final MainActivity mainInstance = this;
         mainViewModel = ViewModelProviders.of(this).get(MainActivityViewModel.class);
         mainViewModel.getAllBudgets().observe(mainInstance, new Observer<List<BudgetTemplate>>()
@@ -61,6 +61,17 @@ public class MainActivity extends AppCompatActivity {
                        }
                    });
                 }
+            }
+        });
+
+        adapter.setOnItemClickListener(new MonthlySpentAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClickListener(BudgetTemplate budget) {
+                Intent intent = new Intent(MainActivity.this, CategoryPage.class);
+                intent.putExtra(CategoryPage.EXTRA_ID, budget.getId());
+                intent.putExtra(CategoryPage.EXTRA_CATEGORY, budget.getCategory());
+
+                startActivity(intent);
             }
         });
     }
