@@ -20,6 +20,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.NoteHo
     private List<NoteAmount> noteAmounts = new ArrayList<>();
     private CategoryAdapter.OnItemClickListener listener;
 
+
     @NonNull
     @Override public CategoryAdapter.NoteHolder onCreateViewHolder(@NonNull ViewGroup parent,
                                                                           int viewType)
