@@ -70,6 +70,7 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent(MainActivity.this, CategoryPage.class);
                 intent.putExtra(CategoryPage.EXTRA_ID, budget.getId());
                 intent.putExtra(CategoryPage.EXTRA_CATEGORY, budget.getCategory());
+                intent.putExtra(CategoryPage.EXTRA_AMOUNT, budget.getAmount());
 
                 startActivity(intent);
             }
