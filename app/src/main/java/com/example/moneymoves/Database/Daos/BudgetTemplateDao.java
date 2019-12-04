@@ -15,4 +15,6 @@ public abstract class BudgetTemplateDao implements IDao<BudgetTemplate>
 	@Query("DELETE FROM BUDGET_TEMPLATE") public abstract void deleteAllBudgets();
 
 	@Query("SELECT * FROM BUDGET_TEMPLATE") public abstract LiveData<List<BudgetTemplate>> getAllBudgets();
+
+	@Query(("SELECT SUM(amount) FROM BUDGET_TEMPLATE")) public abstract double sumBudgets();
 }

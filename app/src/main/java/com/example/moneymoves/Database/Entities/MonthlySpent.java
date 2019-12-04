@@ -11,7 +11,7 @@ public class MonthlySpent implements IEntity
 
 	private String category;
 
-	private String name; //this is the "note"
+	private String name; //this is the "note/name"
 
 	private double amount;
 

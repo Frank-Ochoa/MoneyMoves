@@ -1,9 +1,11 @@
 package com.example.moneymoves.Database;
 
 import android.app.Application;
+import android.icu.util.ULocale;
 import android.os.AsyncTask;
 
 import androidx.lifecycle.LiveData;
+import androidx.lifecycle.Observer;
 
 import com.example.moneymoves.Database.Daos.BudgetTemplateDao;
 import com.example.moneymoves.Database.Daos.IDao;
@@ -15,6 +17,7 @@ import com.example.moneymoves.Database.Entities.IEntity;
 import com.example.moneymoves.Database.Entities.Income;
 import com.example.moneymoves.Database.Entities.MonthlyRecord;
 import com.example.moneymoves.Database.Entities.MonthlySpent;
+import com.example.moneymoves.Database.POJOs.CategoryAmount;
 
 import java.util.List;
 
@@ -26,9 +29,11 @@ public class MoneyRepository
 	private MonthlySpentDao monthlySpentDao;
 
 	private LiveData<List<BudgetTemplate>> allBudgets;
+	private double sumBudgets;
 	private LiveData<List<Income>> allIncome;
 	private LiveData<List<MonthlyRecord>> allMonthlyRecords;
 	private LiveData<List<MonthlySpent>> allMonthlySpent;
+	private LiveData<List<CategoryAmount>> allCategoryAmount;
 
 	public MoneyRepository(Application application)
 	{
@@ -44,6 +49,7 @@ public class MoneyRepository
 		allIncome = incomeDao.getIncome();
 		allMonthlyRecords = monthlyRecordDao.getMonthlyRecords();
 		allMonthlySpent = monthlySpentDao.getMonthlySpent();
+		sumBudgets = budgetTemplateDao.sumBudgets();
 	}
 
 	public LiveData<List<BudgetTemplate>> getAllBudgets()
@@ -51,10 +57,13 @@ public class MoneyRepository
 		return allBudgets;
 	}
 
+	//if we have multiple incomes, add query in dao to sum the incomes, then new method in repo, then call it in viewModel.
 	public LiveData<List<Income>> getAllIncome()
 	{
 		return allIncome;
 	}
+
+	public double sumBudgets() {return sumBudgets;}
 
 	public LiveData<List<MonthlyRecord>> getAllMonthlyRecords()
 	{
@@ -64,6 +73,10 @@ public class MoneyRepository
 	public LiveData<List<MonthlySpent>> getAllMonthlySpent()
 	{
 		return allMonthlySpent;
+	}
+
+	public LiveData<Double> getSumAmountOfCategory(String  cat){
+		return monthlySpentDao.getSumAmountOfCategory(cat);
 	}
 
 
