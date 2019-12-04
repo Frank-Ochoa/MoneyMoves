@@ -15,7 +15,7 @@ import com.example.moneymoves.Database.Entities.IEntity;
 import com.example.moneymoves.Database.Entities.Income;
 import com.example.moneymoves.Database.Entities.MonthlyRecord;
 import com.example.moneymoves.Database.Entities.MonthlySpent;
-import com.example.moneymoves.Database.POJOs.CategoryAmount;
+import com.example.moneymoves.Database.POJOs.NoteAmount;
 
 import java.util.List;
 
@@ -48,7 +48,7 @@ public class MoneyRepository
 	}
 
 
-	public LiveData<List<CategoryAmount>> getAllCategoryAmount(String cat)
+	public LiveData<List<NoteAmount>> getAllCategoryAmount(String cat)
 	{
 		return monthlySpentDao.getAllInCategory(cat);
 	}

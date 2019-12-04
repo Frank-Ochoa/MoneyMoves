@@ -1,12 +1,16 @@
 package com.example.moneymoves.Pages;
 
+import android.content.Intent;
 import android.os.Bundle;
 
+import com.example.moneymoves.ViewModels.MainActivityViewModel;
+import com.example.moneymoves.ViewModels.SpentPageViewModel;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.lifecycle.ViewModelProviders;
 
 import android.view.View;
 
@@ -17,6 +21,9 @@ public class CategoryPage extends AppCompatActivity {
     public static final String EXTRA_ID = "ID";
     public static final String EXTRA_CATEGORY = "CATEGORY";
     public static final String EXTRA_AMOUNT = "AMOUNT";
+
+    MonthlySpentAdapter adapter;
+    private SpentPageViewModel spentViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +40,12 @@ public class CategoryPage extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+        Intent intent = getIntent();
+        Double budgetAmount = intent.getDoubleExtra(EXTRA_AMOUNT, 0.0);
+        String cat = intent.getStringExtra(EXTRA_CATEGORY);
+
+        spentViewModel = ViewModelProviders.of(this).get(SpentPageViewModel.class);
+        spentViewModel.setAllSpent(cat);
     }
 
 }

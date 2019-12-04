@@ -6,32 +6,42 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 
-import com.example.moneymoves.Database.Entities.BudgetTemplate;
 import com.example.moneymoves.Database.MoneyRepository;
-import com.example.moneymoves.Database.POJOs.CategoryAmount;
+import com.example.moneymoves.Database.POJOs.NoteAmount;
 
 import java.util.List;
 
 public class SpentPageViewModel extends AndroidViewModel
 {
     private MoneyRepository repository;
-    private LiveData<List<CategoryAmount>> allSpent;
+    private LiveData<List<NoteAmount>> allSpent;
     private LiveData<Double> totalAmountSpent;
 
     public SpentPageViewModel(@NonNull Application application)
     {
         super(application);
         repository = new MoneyRepository(application);
-        allSpent = repository.getAllCategoryAmount();
     }
 
-    public LiveData<List<CategoryAmount>> getAllBudgets()
+    public LiveData<List<NoteAmount>> getAllSpent()
     {
         return allSpent;
     }
 
     public LiveData<Double> getSumAmountOfCategory(String cat)
     {
-        return repository.getSumAmountOfCategory(cat);
+        return totalAmountSpent;
     }
+
+    public void setSumAmountOfCategory(String cat)
+    {
+        totalAmountSpent = repository.getSumAmountOfCategory(cat);
+    }
+
+    public void setAllSpent(String cat){
+        allSpent = repository.getAllCategoryAmount(cat);
+    }
+
+
+
 }
