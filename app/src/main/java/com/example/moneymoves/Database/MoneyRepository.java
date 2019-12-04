@@ -1,11 +1,9 @@
 package com.example.moneymoves.Database;
 
 import android.app.Application;
-import android.icu.util.ULocale;
 import android.os.AsyncTask;
 
 import androidx.lifecycle.LiveData;
-import androidx.lifecycle.Observer;
 
 import com.example.moneymoves.Database.Daos.BudgetTemplateDao;
 import com.example.moneymoves.Database.Daos.IDao;
@@ -17,7 +15,7 @@ import com.example.moneymoves.Database.Entities.IEntity;
 import com.example.moneymoves.Database.Entities.Income;
 import com.example.moneymoves.Database.Entities.MonthlyRecord;
 import com.example.moneymoves.Database.Entities.MonthlySpent;
-import com.example.moneymoves.Database.POJOs.CategoryAmount;
+import com.example.moneymoves.Database.POJOs.NoteAmount;
 
 import java.util.List;
 
@@ -33,7 +31,6 @@ public class MoneyRepository
 	private LiveData<List<Income>> allIncome;
 	private LiveData<List<MonthlyRecord>> allMonthlyRecords;
 	private LiveData<List<MonthlySpent>> allMonthlySpent;
-	private LiveData<List<CategoryAmount>> allCategoryAmount;
 
 	public MoneyRepository(Application application)
 	{
@@ -50,6 +47,12 @@ public class MoneyRepository
 		allMonthlyRecords = monthlyRecordDao.getMonthlyRecords();
 		allMonthlySpent = monthlySpentDao.getMonthlySpent();
 		sumBudgets = budgetTemplateDao.sumBudgets();
+	}
+
+
+	public LiveData<List<NoteAmount>> getAllCategoryAmount(String cat)
+	{
+		return monthlySpentDao.getAllInCategory(cat);
 	}
 
 	public LiveData<List<BudgetTemplate>> getAllBudgets()
