@@ -16,6 +16,7 @@ public class CategoryPage extends AppCompatActivity {
 
     public static final String EXTRA_ID = "ID";
     public static final String EXTRA_CATEGORY = "CATEGORY";
+    public static final String EXTRA_AMOUNT = "AMOUNT";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
