@@ -18,55 +18,61 @@ import com.example.moneymoves.ViewModels.SpentPageViewModel;
 
 import java.util.List;
 
-public class CategoryPage extends AppCompatActivity {
+public class CategoryPage extends AppCompatActivity
+{
 
-    public static final String EXTRA_ID = "ID";
-    public static final String EXTRA_CATEGORY = "CATEGORY";
-    public static final String EXTRA_AMOUNT = "AMOUNT";
+	public static final String EXTRA_ID = "ID";
+	public static final String EXTRA_CATEGORY = "CATEGORY";
+	public static final String EXTRA_AMOUNT = "AMOUNT";
 
-    CategoryAdapter adapter;
-    private SpentPageViewModel spentViewModel;
+	CategoryAdapter adapter;
+	private SpentPageViewModel spentViewModel;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_category_page);
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+	@Override protected void onCreate(Bundle savedInstanceState)
+	{
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_category_page);
+		Toolbar toolbar = findViewById(R.id.toolbar);
+		setSupportActionBar(toolbar);
 
-        TextView x = findViewById(R.id.noteAmount);
-        TextView y = findViewById(R.id.budgetCategory);
+		final TextView x = findViewById(R.id.noteAmount);
+		TextView y = findViewById(R.id.budgetCategory);
 
+		Intent intent = getIntent();
+		final Double budgetAmount = intent.getDoubleExtra(EXTRA_AMOUNT, 0.0);
+		String cat = intent.getStringExtra(EXTRA_CATEGORY);
+		y.setText(cat);
+		x.setText("BOOP");
 
-        Intent intent = getIntent();
-        Double budgetAmount = intent.getDoubleExtra(EXTRA_AMOUNT, 0.0);
-        String cat = intent.getStringExtra(EXTRA_CATEGORY);
+		RecyclerView recyclerView = findViewById(R.id.recyclerView);
+		LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+		layoutManager.setOrientation(RecyclerView.VERTICAL);
 
-        RecyclerView recyclerView = findViewById(R.id.recyclerView);
-        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
-        layoutManager.setOrientation(RecyclerView.VERTICAL);
+		recyclerView.setLayoutManager(layoutManager);
+		recyclerView.setHasFixedSize(true);
+		adapter = new CategoryAdapter();
+		recyclerView.setAdapter(adapter);
 
-        recyclerView.setLayoutManager(layoutManager);
-        recyclerView.setHasFixedSize(true);
-        adapter = new CategoryAdapter();
-        recyclerView.setAdapter(adapter);
+		spentViewModel = ViewModelProviders.of(this).get(SpentPageViewModel.class);
+		spentViewModel.setAllSpent(cat);
+		spentViewModel.getAllSpent().observe(this, new Observer<List<NoteAmount>>()
+		{
+			@Override public void onChanged(List<NoteAmount> noteAmounts)
+			{
+				adapter.setNoteAmounts(noteAmounts);
+			}
+		});
 
-        spentViewModel = ViewModelProviders.of(this).get(SpentPageViewModel.class);
-        spentViewModel.setAllSpent(cat);
-        spentViewModel.getAllSpent().observe(this, new Observer<List<NoteAmount>>()
-        {
-            @Override public void onChanged(List<NoteAmount> noteAmounts)
-            {
-                adapter.setNoteAmounts(noteAmounts);
-            }
-        });
+		Double initialSpent = spentViewModel.getSumAmountOfCategory(cat).getValue();
+		x.setText(initialSpent + "/" + budgetAmount);
 
-        spentViewModel.getSumAmountOfCategory(cat).observe(this, new Observer<Double>() {
-            @Override
-            public void onChanged(Double aDouble) {
-
-            }
-        });
-    }
+		spentViewModel.getSumAmountOfCategory(cat).observe(this, new Observer<Double>()
+		{
+			@Override public void onChanged(Double aDouble)
+			{
+				x.setText(aDouble + "/" + budgetAmount);
+			}
+		});
+	}
 
 }
