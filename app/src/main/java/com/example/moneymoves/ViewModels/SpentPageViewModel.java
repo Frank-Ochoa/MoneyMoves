@@ -3,6 +3,7 @@ package com.example.moneymoves.ViewModels;
 import android.app.Application;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 
@@ -30,7 +31,20 @@ public class SpentPageViewModel extends AndroidViewModel
 
     public LiveData<Double> getSumAmountOfCategory(String cat)
     {
-        return totalAmountSpent;
+        if (totalAmountSpent == null)
+        {
+            return new LiveData<Double>()
+            {
+                @Nullable @Override public Double getValue()
+                {
+                    return 0.0;
+                }
+            };
+        }
+        else
+        {
+            return totalAmountSpent;
+        }
     }
 
     public void setSumAmountOfCategory(String cat)
