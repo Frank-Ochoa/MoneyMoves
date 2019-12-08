@@ -47,6 +47,10 @@ public class MoneyRepository
 		allMonthlySpent = monthlySpentDao.getMonthlySpent();
 	}
 
+	public void dummyInsert(MonthlySpent monthlySpent)
+	{
+		new InsertAsyncTask(monthlySpentDao).execute(monthlySpent);
+	}
 
 	public LiveData<List<NoteAmount>> getAllCategoryAmount(String cat)
 	{

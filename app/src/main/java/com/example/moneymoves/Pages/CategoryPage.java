@@ -42,7 +42,8 @@ public class CategoryPage extends AppCompatActivity
 		final Double budgetAmount = intent.getDoubleExtra(EXTRA_AMOUNT, 0.0);
 		String cat = intent.getStringExtra(EXTRA_CATEGORY);
 		y.setText(cat);
-		x.setText("BOOP");
+		Double initialSpent = spentViewModel.getSumAmountOfCategory(cat).getValue();
+		x.setText(initialSpent + "/" + budgetAmount);
 
 		RecyclerView recyclerView = findViewById(R.id.recyclerView);
 		LinearLayoutManager layoutManager = new LinearLayoutManager(this);
@@ -63,8 +64,6 @@ public class CategoryPage extends AppCompatActivity
 			}
 		});
 
-		Double initialSpent = spentViewModel.getSumAmountOfCategory(cat).getValue();
-		x.setText(initialSpent + "/" + budgetAmount);
 
 		spentViewModel.getSumAmountOfCategory(cat).observe(this, new Observer<Double>()
 		{
