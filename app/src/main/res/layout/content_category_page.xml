@@ -8,6 +8,44 @@
     tools:context=".Pages.CategoryPage"
     tools:showIn="@layout/activity_category_page">
 
+    <androidx.cardview.widget.CardView
+            android:layout_width="400dp"
+            android:layout_height="52dp"
+            app:layout_constraintBottom_toTopOf="@+id/relativeLayout"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+        <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="8dp">
+
+            <TextView
+                    android:id="@+id/noteAmount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:hint="Budget Amount"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+
+            <TextView
+                    android:id="@+id/budgetCategory"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@+id/noteAmount"
+                    android:layout_alignParentStart="true"
+                    android:layout_toStartOf="@+id/noteAmount"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:text="Budget Category"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+
+
+        </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
+
     <RelativeLayout
         android:id="@+id/relativeLayout"
         android:layout_width="match_parent"

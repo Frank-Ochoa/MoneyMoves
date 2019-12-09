@@ -8,7 +8,6 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.moneymoves.Database.Entities.BudgetTemplate;
 import com.example.moneymoves.Database.POJOs.NoteAmount;
 import com.example.moneymoves.R;
 
@@ -18,7 +17,8 @@ import java.util.List;
 public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.NoteHolder>
 {
     private List<NoteAmount> noteAmounts = new ArrayList<>();
-    private CategoryAdapter.OnItemClickListener listener;
+    //private CategoryAdapter.OnItemClickListener listener;
+
 
     @NonNull
     @Override public CategoryAdapter.NoteHolder onCreateViewHolder(@NonNull ViewGroup parent,

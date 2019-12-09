@@ -57,6 +57,7 @@ public class ExpensesPage extends AppCompatActivity
 		adapter = new AdvavcedMoneyAdapter();
 		recyclerView.setAdapter(adapter);
 
+
 		// Destroys when finished
 		budgetTemplateViewModel = ViewModelProviders.of(this).get(BudgetTemplateViewModel.class);
 		budgetTemplateViewModel.getAllBudgets().observe(this, new Observer<List<BudgetTemplate>>()
@@ -67,6 +68,9 @@ public class ExpensesPage extends AppCompatActivity
 				adapter.setBudgets(budgetTemplates);
 			}
 		});
+
+		//budgetTemplateViewModel.dummyInsert(new MonthlySpent("Food", "JMikes", 10.0));
+
 
 		new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(0,
 				ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT)

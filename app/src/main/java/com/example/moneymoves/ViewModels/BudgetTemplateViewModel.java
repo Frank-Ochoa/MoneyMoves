@@ -7,6 +7,7 @@ import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 
 import com.example.moneymoves.Database.Entities.BudgetTemplate;
+import com.example.moneymoves.Database.Entities.MonthlySpent;
 import com.example.moneymoves.Database.MoneyRepository;
 
 import java.util.List;
@@ -46,5 +47,10 @@ public class BudgetTemplateViewModel extends AndroidViewModel
 	public LiveData<List<BudgetTemplate>> getAllBudgets()
 	{
 		return allBudgets;
+	}
+
+	public void dummyInsert(MonthlySpent monthlySpent)
+	{
+		repository.dummyInsert(monthlySpent);
 	}
 }
