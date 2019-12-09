@@ -14,11 +14,13 @@ import java.util.List;
 
 	@Query("SELECT * FROM MONTHLY_SPENT") public abstract LiveData<List<MonthlySpent>> getMonthlySpent();
 
-	@Query("SELECT NAME, AMOUNT FROM MONTHLY_SPENT WHERE CATEGORY = :cat ")
-	public abstract LiveData<List<NoteAmount>> getAllInCategory(
+	@Query("SELECT NAME, AMOUNT FROM MONTHLY_SPENT WHERE CATEGORY = :cat ") public abstract LiveData<List<NoteAmount>> getAllInCategory(
 			String cat);
 
-	@Query("SELECT sum(AMOUNT) FROM MONTHLY_SPENT WHERE CATEGORY = :cat")
-	public abstract LiveData<Double> getSumAmountOfCategory(String cat);
+	@Query("SELECT sum(AMOUNT) FROM MONTHLY_SPENT WHERE CATEGORY = :cat") public abstract LiveData<Double> getSumAmountOfCategory(
+			String cat);
+
+	@Query("SELECT * FROM MONTHLY_SPENT WHERE CATEGORY = :cat") public abstract LiveData<List<MonthlySpent>> getMonthlySpentFromCat(
+			String cat);
 
 }

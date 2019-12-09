@@ -8,14 +8,13 @@ import androidx.lifecycle.LiveData;
 
 import com.example.moneymoves.Database.Entities.MonthlySpent;
 import com.example.moneymoves.Database.MoneyRepository;
-import com.example.moneymoves.Database.POJOs.NoteAmount;
 
 import java.util.List;
 
 public class SpentPageViewModel extends AndroidViewModel
 {
 	private MoneyRepository repository;
-	private LiveData<List<NoteAmount>> allSpent;
+	private LiveData<List<MonthlySpent>> allSpent;
 	private LiveData<Double> totalAmountSpent;
 
 	public SpentPageViewModel(@NonNull Application application)
@@ -24,20 +23,26 @@ public class SpentPageViewModel extends AndroidViewModel
 		repository = new MoneyRepository(application);
 	}
 
-	public LiveData<List<NoteAmount>> getAllSpent()
+	public LiveData<List<MonthlySpent>> getAllSpent()
 	{
 		return allSpent;
 	}
 
 	public void setAllSpent(String cat)
 	{
-		allSpent = repository.getAllCategoryAmount(cat);
+		allSpent = repository.getAllMonthlySpentFromCat(cat);
 	}
 
 	public LiveData<Double> getSumAmountOfCategory(String cat)
 	{
 		return repository.getSumAmountOfCategory(cat);
 	}
+
+	public void deleteSpent(MonthlySpent monthlySpent)
+	{
+		repository.deleteMonthlySpent(monthlySpent);
+	}
+
 
 	public void setSumAmountOfCategory(String cat)
 	{

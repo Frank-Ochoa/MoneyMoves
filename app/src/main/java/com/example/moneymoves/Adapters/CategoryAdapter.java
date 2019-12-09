@@ -8,7 +8,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.moneymoves.Database.POJOs.NoteAmount;
+import com.example.moneymoves.Database.Entities.MonthlySpent;
 import com.example.moneymoves.R;
 
 import java.util.ArrayList;
@@ -16,7 +16,7 @@ import java.util.List;
 
 public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.NoteHolder>
 {
-    private List<NoteAmount> noteAmounts = new ArrayList<>();
+    private List<MonthlySpent> noteAmounts = new ArrayList<>();
     //private CategoryAdapter.OnItemClickListener listener;
 
 
@@ -31,9 +31,9 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.NoteHo
 
     @Override public void onBindViewHolder(@NonNull CategoryAdapter.NoteHolder holder, int position)
     {
-        NoteAmount curr = noteAmounts.get(position);
-        holder.noteName.setText(curr.note);
-        holder.amount.setText(String.valueOf(curr.amount));
+        MonthlySpent curr = noteAmounts.get(position);
+        holder.noteName.setText(curr.getName());
+        holder.amount.setText(String.valueOf(curr.getAmount()));
     }
 
     @Override public int getItemCount()
@@ -41,13 +41,13 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.NoteHo
         return noteAmounts.size();
     }
 
-    public void setNoteAmounts(List<NoteAmount> noteAmounts)
+    public void setNoteAmounts(List<MonthlySpent> noteAmounts)
     {
         this.noteAmounts = noteAmounts;
         notifyDataSetChanged();
     }
 
-    public NoteAmount getNoteAmount(int position)
+    public MonthlySpent getNoteAmount(int position)
     {
         return noteAmounts.get(position);
     }
