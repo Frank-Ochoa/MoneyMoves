@@ -3,6 +3,7 @@ package com.example.moneymoves.Pages;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -36,6 +37,7 @@ public class ExpensesPage extends AppCompatActivity
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_expenses_page);
 		Toolbar toolbar = findViewById(R.id.toolbar);
+
 		setSupportActionBar(toolbar);
 
 		FloatingActionButton addExpenseButton = findViewById(R.id.addExpenseButton);

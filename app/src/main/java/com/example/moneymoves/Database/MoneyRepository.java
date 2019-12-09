@@ -27,7 +27,7 @@ public class MoneyRepository
 	private MonthlySpentDao monthlySpentDao;
 
 	private LiveData<List<BudgetTemplate>> allBudgets;
-	private double sumBudgets;
+	private LiveData<Double> sumBudgets;
 	private LiveData<List<Income>> allIncome;
 	private LiveData<List<MonthlyRecord>> allMonthlyRecords;
 	private LiveData<List<MonthlySpent>> allMonthlySpent;
@@ -59,6 +59,11 @@ public class MoneyRepository
 		return monthlySpentDao.getAllInCategory(cat);
 	}
 
+	public LiveData<Double> getCategoryBudget(String cat)
+	{
+		return budgetTemplateDao.getCategoryBudget(cat);
+	}
+
 	public LiveData<List<BudgetTemplate>> getAllBudgets()
 	{
 		return allBudgets;
@@ -70,7 +75,7 @@ public class MoneyRepository
 		return allIncome;
 	}
 
-	public double sumBudgets() {return sumBudgets;}
+	public LiveData<Double> sumBudgets() {return sumBudgets;}
 
 	public LiveData<List<MonthlyRecord>> getAllMonthlyRecords()
 	{
@@ -82,10 +87,10 @@ public class MoneyRepository
 		return allMonthlySpent;
 	}
 
-	public LiveData<Double> getSumAmountOfCategory(String  cat){
+	public LiveData<Double> getSumAmountOfCategory(String  cat)
+	{
 		return monthlySpentDao.getSumAmountOfCategory(cat);
 	}
-
 
 	public void insertBudget(BudgetTemplate budgetTemplate)
 	{

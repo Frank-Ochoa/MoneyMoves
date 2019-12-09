@@ -28,10 +28,14 @@ public class ProgressBarViewModel extends AndroidViewModel {
     public LiveData<List<Income>> getAllIncome() {return repository.getAllIncome();}
 
     //returns a sum of all budgets as a double
-    public double sumBudgets()
+    public LiveData<Double> sumBudgets()
     {
         return repository.sumBudgets();
     }
 
+    //returns the budget for a single category
+    public LiveData<Double> getCategoryBudget(String cat) {return repository.getCategoryBudget(cat); }
 
+    //returns the amount spend during a single month on a specific category "cat"
+    public LiveData<Double> getSumAmountOfCategory(String cat) {return repository.getSumAmountOfCategory(cat); }
 }

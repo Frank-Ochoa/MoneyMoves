@@ -16,5 +16,7 @@ public abstract class BudgetTemplateDao implements IDao<BudgetTemplate>
 
 	@Query("SELECT * FROM BUDGET_TEMPLATE") public abstract LiveData<List<BudgetTemplate>> getAllBudgets();
 
-	@Query(("SELECT SUM(amount) FROM BUDGET_TEMPLATE")) public abstract double sumBudgets();
+	@Query(("SELECT SUM(amount) FROM BUDGET_TEMPLATE")) public abstract LiveData<Double> sumBudgets();
+
+	@Query("SELECT amount FROM BUDGET_TEMPLATE WHERE CATEGORY = :cat") public abstract LiveData<Double> getCategoryBudget(String cat);
 }
