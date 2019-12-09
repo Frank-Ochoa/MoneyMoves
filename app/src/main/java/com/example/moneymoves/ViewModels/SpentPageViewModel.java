@@ -6,6 +6,7 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 
+import com.example.moneymoves.Database.Entities.MonthlySpent;
 import com.example.moneymoves.Database.MoneyRepository;
 import com.example.moneymoves.Database.POJOs.NoteAmount;
 
@@ -43,4 +44,12 @@ public class SpentPageViewModel extends AndroidViewModel
 		totalAmountSpent = repository.getSumAmountOfCategory(cat);
 	}
 
+	public void insertNote(MonthlySpent note)
+	{
+		this.repository.insertMonthlySpent(note);
+	}
+
+	public void updateNote(MonthlySpent note){
+		this.repository.updateMonthlySpent(note);
+	}
 }

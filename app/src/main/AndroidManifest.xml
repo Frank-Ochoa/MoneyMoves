@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".AddSpentPage"
+            android:name=".Pages.AddSpentPage"
             android:label="@string/title_activity_add_spent_page"
             android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
