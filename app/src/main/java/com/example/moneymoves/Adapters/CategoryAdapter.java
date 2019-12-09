@@ -61,7 +61,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.NoteHo
         {
             super(itemView);
             noteName = itemView.findViewById(R.id.budgetCategory);
-            amount = itemView.findViewById(R.id.expenseAmount);
+            amount = itemView.findViewById(R.id.spentAmount);
 
 //            itemView.setOnClickListener(new View.OnClickListener(){
 //                @Override

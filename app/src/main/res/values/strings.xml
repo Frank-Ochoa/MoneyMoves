@@ -17,4 +17,5 @@
     <string name="title_activity_main">MainActivity</string>
     <string name="progressBarText">Amount</string>
     <string name="title_activity_category_page">CategoryPage</string>
+    <string name="title_activity_add_spent_page">AddSpentPage</string>
 </resources>

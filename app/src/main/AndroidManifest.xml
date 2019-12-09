@@ -10,9 +10,13 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".AddSpentPage"
+            android:label="@string/title_activity_add_spent_page"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
             android:name=".Pages.CategoryPage"
             android:label="@string/title_activity_category_page"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Pages.MainActivity"
             android:label="@string/title_activity_main"

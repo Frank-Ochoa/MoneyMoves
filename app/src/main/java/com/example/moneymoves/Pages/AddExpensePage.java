@@ -23,8 +23,8 @@ public class AddExpensePage extends AppCompatActivity {
 		setContentView(R.layout.activity_add_expense);
 		Toolbar toolbar = findViewById(R.id.toolbar);
 		setSupportActionBar(toolbar);
-		EditText categoryTextView = findViewById(R.id.expenseCategory);
-		EditText amountTextView = findViewById(R.id.expenseAmount);
+		EditText categoryTextView = findViewById(R.id.spentNote);
+		EditText amountTextView = findViewById(R.id.spentAmount);
 
 
 		Intent intent = getIntent();
@@ -40,10 +40,10 @@ public class AddExpensePage extends AppCompatActivity {
 	}
 
 	public void addExpense(View v){
-		TextView categoryTV = findViewById(R.id.expenseCategory);
+		TextView categoryTV = findViewById(R.id.spentNote);
 		String category = categoryTV.getText().toString();
 
-		EditText amountTV = findViewById(R.id.expenseAmount);
+		EditText amountTV = findViewById(R.id.spentAmount);
 		double amount = Double.valueOf(amountTV.getText().toString());
 
 		Intent data = new Intent();
