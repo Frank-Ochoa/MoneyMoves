@@ -10,7 +10,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.moneymoves.Database.Entities.BudgetTemplate;
 import com.example.moneymoves.R;
-import com.example.moneymoves.ViewModels.BudgetTemplateViewModel;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -77,7 +76,7 @@ public class MonthlySpentAdapter extends RecyclerView.Adapter<MonthlySpentAdapte
         {
             super(itemView);
             category = itemView.findViewById(R.id.budgetCategory);
-            budget_spent = itemView.findViewById(R.id.expenseAmount);
+            budget_spent = itemView.findViewById(R.id.spentAmount);
 
             itemView.setOnClickListener(new View.OnClickListener(){
                 @Override

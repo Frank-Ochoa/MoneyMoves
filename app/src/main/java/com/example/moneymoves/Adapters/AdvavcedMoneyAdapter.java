@@ -3,7 +3,6 @@ package com.example.moneymoves.Adapters;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -61,7 +60,7 @@ public class AdvavcedMoneyAdapter extends RecyclerView.Adapter<AdvavcedMoneyAdap
 		{
 			super(itemView);
 			category = itemView.findViewById(R.id.budgetCategory);
-			amount = itemView.findViewById(R.id.expenseAmount);
+			amount = itemView.findViewById(R.id.spentAmount);
 
 			itemView.setOnClickListener(new View.OnClickListener(){
 				@Override
