@@ -59,8 +59,8 @@ public class CategoryPage extends AppCompatActivity
 
 		Intent intent = getIntent();
 		final Double budgetAmount = intent.getDoubleExtra(EXTRA_AMOUNT, 0.0);
-		String cat = intent.getStringExtra(EXTRA_CATEGORY);
-		y.setText(cat);
+		category = intent.getStringExtra(EXTRA_CATEGORY);
+		y.setText(category);
 
 		RecyclerView recyclerView = findViewById(R.id.recyclerView);
 		LinearLayoutManager layoutManager = new LinearLayoutManager(this);
@@ -91,7 +91,7 @@ public class CategoryPage extends AppCompatActivity
 				}).attachToRecyclerView(recyclerView);
 
 		spentViewModel = ViewModelProviders.of(this).get(SpentPageViewModel.class);
-		spentViewModel.setAllSpent(cat);
+		spentViewModel.setAllSpent(category);
 		spentViewModel.getAllSpent().observe(this, new Observer<List<MonthlySpent>>()
 		{
 			@Override public void onChanged(List<MonthlySpent> noteAmounts)
@@ -100,7 +100,7 @@ public class CategoryPage extends AppCompatActivity
 			}
 		});
 
-		spentViewModel.getSumAmountOfCategory(cat).observe(this, new Observer<Double>()
+		spentViewModel.getSumAmountOfCategory(category).observe(this, new Observer<Double>()
 		{
 			@Override public void onChanged(Double aDouble)
 			{
@@ -127,7 +127,6 @@ public class CategoryPage extends AppCompatActivity
 			double amount = data.getDoubleExtra(AddSpentPage.EXTRA_AMOUNT, 0.0);
 			MonthlySpent spentItem = new MonthlySpent(category, note, amount);
 			spentViewModel.insertNote(spentItem);
-
 			Toast.makeText(this, "New Note Saved", Toast.LENGTH_SHORT).show();
 		}
 		else if (requestCode == EDIT_NOTE_REQUEST && resultCode == RESULT_OK)

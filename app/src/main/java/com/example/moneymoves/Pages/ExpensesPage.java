@@ -17,6 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.moneymoves.Adapters.AdvavcedMoneyAdapter;
 import com.example.moneymoves.Database.Entities.BudgetTemplate;
+import com.example.moneymoves.Database.Entities.MonthlySpent;
 import com.example.moneymoves.R;
 import com.example.moneymoves.ViewModels.BudgetTemplateViewModel;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -70,7 +71,7 @@ public class ExpensesPage extends AppCompatActivity
 			}
 		});
 
-		//budgetTemplateViewModel.dummyInsert(new MonthlySpent("Food", "JMikes", 10.0));
+		budgetTemplateViewModel.dummyInsert(new MonthlySpent("Food", "JMikes", 10.0));
 
 
 		new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(0,
