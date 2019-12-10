@@ -1,14 +1,12 @@
-
-
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item android:id="@android:id/background" >
-        <color android:color="#21EE24"/>
+    <item android:id="@android:id/background">
+        <color android:color="#ff0600" />
     </item>
 
-    <item android:id="@android:id/background" >
+    <item android:id="@android:id/background">
         <clip>
-            <color android:color="#ff0600"/>
+            <color android:color="#21EE24" />
         </clip>
     </item>
 

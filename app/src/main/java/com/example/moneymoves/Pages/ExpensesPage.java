@@ -72,30 +72,32 @@ public class ExpensesPage extends AppCompatActivity
 			}
 		});
 
+		final ExpensesPage page = this;
 		final ProgressBar bar = findViewById(R.id.pb_red_progress);
 		progressBarViewModel = ViewModelProviders.of(this).get(ProgressBarViewModel.class);
 
-		progressBarViewModel.getAllIncome().observe(this, new Observer<Double>()
+		progressBarViewModel.getAllIncome().observe(page, new Observer<Double>()
 		{
-			@Override public void onChanged(Double aDouble)
+			@Override public void onChanged(final Double income)
 			{
-				bar.setMax(aDouble.intValue());
+				bar.setMax(income.intValue());
+
+				progressBarViewModel.sumBudgets().observe(page, new Observer<Double>()
+				{
+					@Override public void onChanged(Double budget)
+					{
+						if (budget == null)
+						{
+							bar.setProgress(income.intValue());
+						}
+						else
+						{
+
+							bar.setProgress(income.intValue() - budget.intValue());
+						}
 			}
 		});
 
-		progressBarViewModel.sumBudgets().observe(this, new Observer<Double>()
-		{
-			@Override public void onChanged(Double aDouble)
-			{
-				if (aDouble == null)
-				{
-					bar.setProgress(0);
-				}
-				else
-				{
-
-					bar.setProgress(aDouble.intValue());
-				}
 			}
 		});
 
