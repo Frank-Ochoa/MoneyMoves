@@ -77,4 +77,10 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    public void expensePage(View view)
+    {
+        Intent intent = new Intent(this, ExpensesPage.class);
+        startActivity(intent);
+    }
+
 }
