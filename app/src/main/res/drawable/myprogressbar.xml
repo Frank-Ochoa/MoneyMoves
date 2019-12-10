@@ -3,12 +3,12 @@
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item android:id="@android:id/background" >
-        <color android:color="#94F10303"/>
+        <color android:color="#21EE24"/>
     </item>
 
     <item android:id="@android:id/background" >
         <clip>
-            <color android:color="#E139AD3C"/>
+            <color android:color="#ff0600"/>
         </clip>
     </item>
 

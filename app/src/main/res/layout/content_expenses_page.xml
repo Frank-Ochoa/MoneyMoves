@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context=".Pages.ExpensesPage"
-    tools:showIn="@layout/activity_expenses_page">
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        tools:context=".Pages.ExpensesPage"
+        tools:showIn="@layout/activity_expenses_page">
 
     <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:padding="10dp"
             app:layout_constraintBottom_toTopOf="@+id/relativeLayout"
             app:layout_constraintEnd_toEndOf="parent"
@@ -18,10 +18,12 @@
             app:layout_constraintTop_toTopOf="parent">
 
         <ProgressBar
-                android:id="@+id/progressBar"
-                style="@android:style/Widget.ProgressBar.Horizontal"
+                android:id="@+id/pb_red_progress"
+                style="@android:style/Widget.Holo.Light.ProgressBar.Horizontal"
                 android:layout_width="403dp"
                 android:layout_height="51dp"
+                android:minHeight="25dp"
+
                 android:layout_alignParentStart="true"
                 android:layout_alignParentEnd="true"
                 android:layout_marginStart="10dp"
@@ -29,19 +31,9 @@
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="9dp"
 
+                android:progressDrawable="@drawable/myprogressbar"
+                />
 
-                android:max="100"
-                android:minHeight="25dp"
-                android:progress="70"
-                android:progressDrawable="@drawable/myprogressbar" />
-
-        <TextView
-                android:id="@+id/pBarText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:text="@string/progressBarText"
-                android:textSize="16sp" />
     </RelativeLayout>
 
     <RelativeLayout
@@ -53,7 +45,6 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
-
 
 
         <androidx.recyclerview.widget.RecyclerView
@@ -70,15 +61,15 @@
     </RelativeLayout>
 
     <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="mainPage"
+            android:id="@+id/button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="mainPage"
 
-        android:text="Done"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/relativeLayout" />
+            android:text="Done"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/relativeLayout" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

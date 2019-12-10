@@ -30,7 +30,7 @@ public class ExpensesPage extends AppCompatActivity
 
 	public static final int ADD_BUDGET_REQUEST = 1;
 	public static final int EDIT_BUDGET_REQUEST = 2;
-	AdvavcedMoneyAdapter adapter;
+	private AdvavcedMoneyAdapter adapter;
 	private BudgetTemplateViewModel budgetTemplateViewModel;
 	private ProgressBarViewModel progressBarViewModel;
 
@@ -72,7 +72,7 @@ public class ExpensesPage extends AppCompatActivity
 			}
 		});
 
-		final ProgressBar bar = findViewById(R.id.progressBar);
+		final ProgressBar bar = findViewById(R.id.pb_red_progress);
 		progressBarViewModel = ViewModelProviders.of(this).get(ProgressBarViewModel.class);
 
 		progressBarViewModel.getAllIncome().observe(this, new Observer<Double>()
