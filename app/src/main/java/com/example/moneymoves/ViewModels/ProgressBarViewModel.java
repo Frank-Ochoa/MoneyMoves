@@ -7,7 +7,6 @@ import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 
 import com.example.moneymoves.Database.Entities.BudgetTemplate;
-import com.example.moneymoves.Database.Entities.Income;
 import com.example.moneymoves.Database.MoneyRepository;
 
 import java.util.List;
@@ -25,7 +24,7 @@ public class ProgressBarViewModel extends AndroidViewModel {
     }
 
     //returns a list of all incomes
-    public LiveData<List<Income>> getAllIncome() {return repository.getAllIncome();}
+    public LiveData<Double> getAllIncome() {return repository.getAllIncome();}
 
     //returns a sum of all budgets as a double
     public LiveData<Double> sumBudgets()

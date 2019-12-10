@@ -65,8 +65,9 @@ public class IncomePage extends AppCompatActivity {
             default:
         }
 
+        Income income = new Income(amount);
 
-        repository.insertIncome(new Income(amount));
+        repository.insertIncome(income);
 
         startActivity(intent);
     }

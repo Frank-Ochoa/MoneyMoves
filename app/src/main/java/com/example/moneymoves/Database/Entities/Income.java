@@ -6,21 +6,29 @@ import androidx.room.PrimaryKey;
 @Entity(tableName = "INCOME")
 public class Income implements IEntity
 {
-	@PrimaryKey
-	private double income;
+	@PrimaryKey(autoGenerate = true)
+	private int id;
 
-	public Income(double income)
+	private double salary;
+
+	public Income(double salary)
 	{
-		this.income = income;
+		this.salary = salary;
 	}
 
-	public double getIncome()
+	public double getSalary()
 	{
-		return income;
+		return salary;
 	}
 
-	public void setIncome(double income)
+	public int getId()
 	{
-		this.income = income;
+		return id;
 	}
+
+	public void setId(int id)
+	{
+		this.id = id;
+	}
+
 }

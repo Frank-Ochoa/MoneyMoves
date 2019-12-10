@@ -15,7 +15,7 @@ import com.example.moneymoves.Database.Entities.Income;
 import com.example.moneymoves.Database.Entities.MonthlyRecord;
 import com.example.moneymoves.Database.Entities.MonthlySpent;
 
-@Database(entities = { BudgetTemplate.class, Income.class, MonthlyRecord.class, MonthlySpent.class }, version = 1)
+@Database(entities = { BudgetTemplate.class, Income.class, MonthlyRecord.class, MonthlySpent.class }, version = 1, exportSchema = false)
 public abstract class MoneyDatabase extends RoomDatabase
 {
 	private static MoneyDatabase instance;

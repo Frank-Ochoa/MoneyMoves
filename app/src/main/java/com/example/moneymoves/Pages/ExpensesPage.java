@@ -3,6 +3,7 @@ package com.example.moneymoves.Pages;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -17,9 +18,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.moneymoves.Adapters.AdvavcedMoneyAdapter;
 import com.example.moneymoves.Database.Entities.BudgetTemplate;
-import com.example.moneymoves.Database.Entities.MonthlySpent;
 import com.example.moneymoves.R;
 import com.example.moneymoves.ViewModels.BudgetTemplateViewModel;
+import com.example.moneymoves.ViewModels.ProgressBarViewModel;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.List;
@@ -31,6 +32,7 @@ public class ExpensesPage extends AppCompatActivity
 	public static final int EDIT_BUDGET_REQUEST = 2;
 	AdvavcedMoneyAdapter adapter;
 	private BudgetTemplateViewModel budgetTemplateViewModel;
+	private ProgressBarViewModel progressBarViewModel;
 
 	@Override protected void onCreate(Bundle savedInstanceState)
 	{
@@ -40,7 +42,7 @@ public class ExpensesPage extends AppCompatActivity
 
 		setSupportActionBar(toolbar);
 
-		FloatingActionButton addExpenseButton = findViewById(R.id.addExpenseButton);
+		final FloatingActionButton addExpenseButton = findViewById(R.id.addExpenseButton);
 		addExpenseButton.setOnClickListener(new View.OnClickListener()
 		{
 			@Override public void onClick(View view)
@@ -59,7 +61,6 @@ public class ExpensesPage extends AppCompatActivity
 		adapter = new AdvavcedMoneyAdapter();
 		recyclerView.setAdapter(adapter);
 
-
 		// Destroys when finished
 		budgetTemplateViewModel = ViewModelProviders.of(this).get(BudgetTemplateViewModel.class);
 		budgetTemplateViewModel.getAllBudgets().observe(this, new Observer<List<BudgetTemplate>>()
@@ -71,7 +72,32 @@ public class ExpensesPage extends AppCompatActivity
 			}
 		});
 
-		budgetTemplateViewModel.dummyInsert(new MonthlySpent("Food", "JMikes", 10.0));
+		final ProgressBar bar = findViewById(R.id.progressBar);
+		progressBarViewModel = ViewModelProviders.of(this).get(ProgressBarViewModel.class);
+
+		progressBarViewModel.getAllIncome().observe(this, new Observer<Double>()
+		{
+			@Override public void onChanged(Double aDouble)
+			{
+				bar.setMax(aDouble.intValue());
+			}
+		});
+
+		progressBarViewModel.sumBudgets().observe(this, new Observer<Double>()
+		{
+			@Override public void onChanged(Double aDouble)
+			{
+				if (aDouble == null)
+				{
+					bar.setProgress(0);
+				}
+				else
+				{
+
+					bar.setProgress(aDouble.intValue());
+				}
+			}
+		});
 
 
 		new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(0,

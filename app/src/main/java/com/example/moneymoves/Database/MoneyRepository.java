@@ -28,7 +28,7 @@ public class MoneyRepository
 
 	private LiveData<List<BudgetTemplate>> allBudgets;
 	private LiveData<Double> sumBudgets;
-	private LiveData<List<Income>> allIncome;
+	private LiveData<Double> allIncome;
 	private LiveData<List<MonthlyRecord>> allMonthlyRecords;
 	private LiveData<List<MonthlySpent>> allMonthlySpent;
 
@@ -75,7 +75,7 @@ public class MoneyRepository
 	}
 
 	//if we have multiple incomes, add query in dao to sum the incomes, then new method in repo, then call it in viewModel.
-	public LiveData<List<Income>> getAllIncome()
+	public LiveData<Double> getAllIncome()
 	{
 		return allIncome;
 	}
@@ -105,6 +105,7 @@ public class MoneyRepository
 	public void insertIncome(Income income)
 	{
 		new InsertAsyncTask(incomeDao).execute(income);
+		System.out.println("AFTER INSERT IN REPO :: " + incomeDao.getIncome().getValue());
 	}
 
 	public void insertMonthlyRecord(MonthlyRecord monthlyRecord)
