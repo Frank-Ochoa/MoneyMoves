@@ -26,7 +26,7 @@ public class StartController extends AppCompatActivity
 	else{
 		//sub for main page
 		Intent intent = new Intent(this,
-				ExpensesPage.class); //an action something thats going to happen
+				MainActivity.class); //an action something thats going to happen
 		startActivity(intent);
 	}
 

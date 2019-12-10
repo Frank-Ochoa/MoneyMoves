@@ -92,7 +92,7 @@ public class MoneyRepository
 		return allMonthlySpent;
 	}
 
-	public LiveData<Double> getSumAmountOfCategory(String  cat)
+	public LiveData<Double> getSumAmountOfCategory(String cat)
 	{
 		return monthlySpentDao.getSumAmountOfCategory(cat);
 	}

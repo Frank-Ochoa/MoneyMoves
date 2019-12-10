@@ -16,7 +16,9 @@ import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.moneymoves.Adapters.AdvavcedMoneyAdapter;
 import com.example.moneymoves.Adapters.CategoryAdapter;
+import com.example.moneymoves.Database.Entities.BudgetTemplate;
 import com.example.moneymoves.Database.Entities.MonthlySpent;
 import com.example.moneymoves.R;
 import com.example.moneymoves.ViewModels.SpentPageViewModel;
@@ -26,7 +28,6 @@ import java.util.List;
 
 public class CategoryPage extends AppCompatActivity
 {
-
 	public static final int ADD_NOTE_REQUEST = 1;
 	public static final int EDIT_NOTE_REQUEST = 2;
 	public static final String EXTRA_ID = "ID";
@@ -112,6 +113,17 @@ public class CategoryPage extends AppCompatActivity
 				{
 					x.setText(aDouble + "/" + budgetAmount);
 				}
+			}
+		});
+
+		adapter.setOnItemClickListener(new CategoryAdapter.OnItemClickListener() {
+			@Override
+			public void onItemClickListener(MonthlySpent spentItem) {
+				Intent intent2 = new Intent(CategoryPage.this, AddSpentPage.class);
+				intent2.putExtra(AddSpentPage.EXTRA_ID, spentItem.getId());
+				intent2.putExtra(AddSpentPage.EXTRA_NOTE, spentItem.getName());
+				intent2.putExtra(AddSpentPage.EXTRA_AMOUNT, spentItem.getAmount());
+				startActivityForResult(intent2,EDIT_NOTE_REQUEST);
 			}
 		});
 	}

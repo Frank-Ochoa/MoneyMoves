@@ -17,7 +17,7 @@ import java.util.List;
 public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.NoteHolder>
 {
     private List<MonthlySpent> noteAmounts = new ArrayList<>();
-    //private CategoryAdapter.OnItemClickListener listener;
+    private CategoryAdapter.OnItemClickListener listener;
 
 
     @NonNull
@@ -63,25 +63,25 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.NoteHo
             noteName = itemView.findViewById(R.id.budgetCategory);
             amount = itemView.findViewById(R.id.spentAmount);
 
-//            itemView.setOnClickListener(new View.OnClickListener(){
-//                @Override
-//                public void onClick(View v){
-//                    int position = getAdapterPosition();
-//                    //make sure the listener has been created
-//                    //make sure that a deleted item isnt clicked before the row has been removed
-//                    if(listener != null && position != RecyclerView.NO_POSITION) {
-//                        listener.onItemClickListener(noteAmounts.get(position));
-//                    }
-//                }
-//            });
+            itemView.setOnClickListener(new View.OnClickListener(){
+                @Override
+                public void onClick(View v){
+                    int position = getAdapterPosition();
+                    //make sure the listener has been created
+                    //make sure that a deleted item isnt clicked before the row has been removed
+                    if(listener != null && position != RecyclerView.NO_POSITION) {
+                        listener.onItemClickListener(noteAmounts.get(position));
+                    }
+                }
+            });
         }
     }
 
-//    public interface OnItemClickListener{
-//        void onItemClickListener(BudgetTemplate budget); //passing in the budget that we want to update
-//    }
-//
-//    public void setOnItemClickListener(AdvavcedMoneyAdapter.OnItemClickListener listener){
-//        this.listener = listener;
-//    }
+    public interface OnItemClickListener{
+        void onItemClickListener(MonthlySpent spentItem); //passing in the budget that we want to update
+    }
+
+    public void setOnItemClickListener(OnItemClickListener listener){
+        this.listener = listener;
+    }
 }
