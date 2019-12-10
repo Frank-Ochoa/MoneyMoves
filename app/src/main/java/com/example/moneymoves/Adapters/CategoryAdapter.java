@@ -33,7 +33,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.NoteHo
     {
         MonthlySpent curr = noteAmounts.get(position);
         holder.noteName.setText(curr.getName());
-        holder.amount.setText(String.valueOf(curr.getAmount()));
+        holder.amount.setText("$" + curr.getAmount());
     }
 
     @Override public int getItemCount()
