@@ -17,19 +17,22 @@ public class StartController extends AppCompatActivity
 	@Override protected void onCreate(Bundle savedInstanceState)
 	{
 		super.onCreate(savedInstanceState);
-		SharedPreferences pref = getSharedPreferences("prefs",MODE_PRIVATE);
-		boolean flag = pref.getBoolean("firstStart",true);
-	if(flag){
-		Intent intent = new Intent(this, IncomePage.class);
-		startActivity(intent);
-	}
-	else{
-		//sub for main page
-		Intent intent = new Intent(this,
-				MainActivity.class); //an action something thats going to happen
-		startActivity(intent);
-	}
+		SharedPreferences pref = getSharedPreferences("prefs", MODE_PRIVATE);
+		boolean flag = pref.getBoolean("firstStart", true);
+		if (flag)
+		{
+			Intent intent = new Intent(this, IncomePage.class);
+			startActivity(intent);
+		}
+		else
+		{
+			//sub for main page
+			Intent intent = new Intent(this,
+					MainActivity.class); //an action something thats going to happen
+			startActivity(intent);
+		}
 
+		finish();
 
 	}
 
