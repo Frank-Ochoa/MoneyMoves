@@ -28,6 +28,7 @@ public class SpentPageViewModel extends AndroidViewModel
 		return allSpent;
 	}
 
+
 	public void setAllSpent(String cat)
 	{
 		allSpent = repository.getAllMonthlySpentFromCat(cat);

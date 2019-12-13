@@ -3,6 +3,7 @@ package com.example.moneymoves.Pages;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -21,6 +22,7 @@ import com.example.moneymoves.Adapters.CategoryAdapter;
 import com.example.moneymoves.Database.Entities.BudgetTemplate;
 import com.example.moneymoves.Database.Entities.MonthlySpent;
 import com.example.moneymoves.R;
+import com.example.moneymoves.ViewModels.ProgressBarViewModel;
 import com.example.moneymoves.ViewModels.SpentPageViewModel;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -37,6 +39,7 @@ public class CategoryPage extends AppCompatActivity
 
 	CategoryAdapter adapter;
 	private SpentPageViewModel spentViewModel;
+	private ProgressBarViewModel progressBarViewModel;
 
 	@Override protected void onCreate(Bundle savedInstanceState)
 	{
@@ -107,11 +110,11 @@ public class CategoryPage extends AppCompatActivity
 			{
 				if (aDouble == null)
 				{
-					x.setText(0.0 + "/" + budgetAmount);
+					x.setText(0.0 + "/" + budgetAmount + " available");
 				}
 				else
 				{
-					x.setText(aDouble + "/" + budgetAmount);
+					x.setText(budgetAmount-aDouble + "/" + budgetAmount + " available");
 				}
 			}
 		});
@@ -126,7 +129,34 @@ public class CategoryPage extends AppCompatActivity
 				startActivityForResult(intent2,EDIT_NOTE_REQUEST);
 			}
 		});
-	}
+
+
+		final CategoryPage page = this;
+		final ProgressBar bar = findViewById(R.id.pb_red_progress);
+		progressBarViewModel = ViewModelProviders.of(this).get(ProgressBarViewModel.class);
+
+		bar.setMax(budgetAmount.intValue());
+
+		//bar.setMax(budgetAmount.intValue());
+
+				progressBarViewModel.getSumAmountOfCategory(category).observe(page, new Observer<Double>()
+				{
+					@Override public void onChanged(Double budget)
+					{
+						if (budget == null)
+						{
+							bar.setProgress(budgetAmount.intValue());
+						}
+						else
+						{
+
+							bar.setProgress(budgetAmount.intValue() - budget.intValue());
+						}
+					}
+				});
+
+			}
+
 
 	@Override protected void onActivityResult(int requestCode, int resultCode,
 			@Nullable Intent data)

@@ -32,6 +32,8 @@ public class ProgressBarViewModel extends AndroidViewModel {
         return repository.sumBudgets();
     }
 
+    public LiveData<Double> getSumSpent() { return repository.getSumSpent(); }
+
     //returns the budget for a single category
     public LiveData<Double> getCategoryBudget(String cat) {return repository.getCategoryBudget(cat); }
 

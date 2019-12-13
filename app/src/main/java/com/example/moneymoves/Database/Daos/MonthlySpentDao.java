@@ -23,4 +23,6 @@ import java.util.List;
 	@Query("SELECT * FROM MONTHLY_SPENT WHERE CATEGORY = :cat") public abstract LiveData<List<MonthlySpent>> getMonthlySpentFromCat(
 			String cat);
 
+	@Query("SELECT sum(AMOUNT) FROM MONTHLY_SPENT") public abstract LiveData<Double> getSumSpent();
+
 }

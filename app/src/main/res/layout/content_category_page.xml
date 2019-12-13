@@ -1,84 +1,103 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"
-        tools:context=".Pages.CategoryPage"
-        tools:showIn="@layout/activity_category_page">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".Pages.CategoryPage"
+    tools:showIn="@layout/activity_category_page">
 
     <androidx.cardview.widget.CardView
-            android:layout_width="400dp"
-            android:layout_height="52dp"
-            app:layout_constraintBottom_toTopOf="@+id/relativeLayout"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+        android:id="@+id/cardView"
+        android:layout_width="400dp"
+        android:layout_height="52dp"
+        app:layout_constraintBottom_toTopOf="@+id/relativeLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="8dp">
+
+            <TextView
+                android:id="@+id/noteAmount"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:padding="8dp">
+                android:layout_alignParentEnd="true"
+                android:hint="Budget Amount"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
             <TextView
-                    android:id="@+id/noteAmount"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
-                    android:hint="Budget Amount"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Large" />
-
-            <TextView
-                    android:id="@+id/budgetCategory"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignBaseline="@+id/noteAmount"
-                    android:layout_alignParentStart="true"
-                    android:layout_toStartOf="@+id/noteAmount"
-                    android:ellipsize="end"
-                    android:maxLines="1"
-                    android:text="Budget Category"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+                android:id="@+id/budgetCategory"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/noteAmount"
+                android:layout_alignParentStart="true"
+                android:layout_toStartOf="@+id/noteAmount"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="Budget Category"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
 
         </RelativeLayout>
 
     </androidx.cardview.widget.CardView>
 
+    <ProgressBar
+        android:id="@+id/pb_red_progress"
+        style="@android:style/Widget.Holo.Light.ProgressBar.Horizontal"
+        android:layout_width="403dp"
+        android:layout_height="51dp"
+        android:layout_alignParentStart="true"
+
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="8dp"
+
+        android:layout_marginEnd="8dp"
+        android:minHeight="25dp"
+        android:progressDrawable="@drawable/myprogressbar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cardView" />
+
     <RelativeLayout
-            android:id="@+id/relativeLayout"
-            android:layout_width="match_parent"
-            android:layout_height="485dp"
-            android:padding="8dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+        android:id="@+id/relativeLayout"
+        android:layout_width="match_parent"
+        android:layout_height="485dp"
+        android:padding="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
 
         <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recyclerView"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentBottom="true"
-                android:layout_marginStart="8dp"
-                android:layout_marginEnd="8dp" />
+            android:id="@+id/recyclerView"
+            android:layout_width="wrap_content"
+            android:layout_height="373dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="59dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="53dp"
+            android:layout_marginBottom="94dp" />
 
-    </RelativeLayout>
-
-    <Button
+        <Button
             android:id="@+id/button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
 
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="152dp"
+            android:layout_marginBottom="30dp"
             android:onClick="mainPage"
-            android:text="Done"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/relativeLayout" />
+            android:text="Done" />
+
+    </RelativeLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

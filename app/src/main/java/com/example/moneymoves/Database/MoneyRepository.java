@@ -59,6 +59,11 @@ public class MoneyRepository
 		return monthlySpentDao.getAllInCategory(cat);
 	}
 
+	public LiveData<Double> getSumSpent()
+	{
+		return monthlySpentDao.getSumSpent();
+	}
+
 	public LiveData<List<MonthlySpent>> getAllMonthlySpentFromCat(String cat)
 	{
 		return monthlySpentDao.getMonthlySpentFromCat(cat);

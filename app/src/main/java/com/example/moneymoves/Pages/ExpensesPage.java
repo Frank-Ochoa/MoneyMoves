@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -52,6 +53,10 @@ public class ExpensesPage extends AppCompatActivity
 			}
 		});
 
+		final TextView x = findViewById(R.id.noteAmount);
+		TextView y = findViewById(R.id.budgetCategory);
+		y.setText("Income");
+
 		RecyclerView recyclerView = findViewById(R.id.recyclerView);
 		LinearLayoutManager layoutManager = new LinearLayoutManager(this);
 		layoutManager.setOrientation(RecyclerView.VERTICAL);
@@ -89,11 +94,13 @@ public class ExpensesPage extends AppCompatActivity
 						if (budget == null)
 						{
 							bar.setProgress(income.intValue());
+							x.setText(0.0 + "/" + income + " budgeted");
 						}
 						else
 						{
 
 							bar.setProgress(income.intValue() - budget.intValue());
+							x.setText(budget + "/" + income + " budgeted");
 						}
 			}
 		});

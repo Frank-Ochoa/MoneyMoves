@@ -9,6 +9,7 @@ import com.example.moneymoves.Database.Entities.BudgetTemplate;
 import com.example.moneymoves.R;
 import com.example.moneymoves.ViewModels.BudgetTemplateViewModel;
 import com.example.moneymoves.ViewModels.MainActivityViewModel;
+import com.example.moneymoves.ViewModels.ProgressBarViewModel;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
@@ -20,6 +21,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.View;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import java.util.List;
 
@@ -27,6 +30,8 @@ public class MainActivity extends AppCompatActivity {
 
     MonthlySpentAdapter adapter;
     private MainActivityViewModel mainViewModel;
+    private ProgressBarViewModel progressBarViewModel;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,6 +47,10 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setHasFixedSize(true);
         adapter = new MonthlySpentAdapter();
         recyclerView.setAdapter(adapter);
+
+        final TextView x = findViewById(R.id.noteAmount);
+        TextView y = findViewById(R.id.budgetCategory);
+        y.setText("Total Spent");
 
         final MainActivity mainInstance = this;
         mainViewModel = ViewModelProviders.of(this).get(MainActivityViewModel.class);
@@ -61,6 +70,37 @@ public class MainActivity extends AppCompatActivity {
                        }
                    });
                 }
+            }
+        });
+
+        final MainActivity page = this;
+        final ProgressBar bar = findViewById(R.id.pb_red_progress);
+        progressBarViewModel = ViewModelProviders.of(this).get(ProgressBarViewModel.class);
+
+        progressBarViewModel.getAllIncome().observe(page, new Observer<Double>()
+        {
+            @Override public void onChanged(final Double income)
+            {
+                bar.setMax(income.intValue());
+
+                progressBarViewModel.getSumSpent().observe(page, new Observer<Double>()
+                {
+                    @Override public void onChanged(Double spent)
+                    {
+                        if (spent == null)
+                        {
+                            bar.setProgress(income.intValue());
+                            x.setText(0.0 + "/" + income + " Spent");
+                        }
+                        else
+                        {
+
+                            bar.setProgress(income.intValue() - spent.intValue());
+                            x.setText(spent + "/" + income + " Spent");
+                        }
+                    }
+                });
+
             }
         });
 
