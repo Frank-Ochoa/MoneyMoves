@@ -168,6 +168,11 @@ public class MoneyRepository
 		new DeleteAllBudgetsAsyncTask(budgetTemplateDao).execute();
 	}
 
+	public void deleteAllIncome()
+	{
+		new DeleteAllIncomeAsyncTask(incomeDao).execute();
+	}
+
 	private static class InsertAsyncTask extends AsyncTask<IEntity, Void, Void>
 	{
 		private IDao dao;
@@ -229,6 +234,22 @@ public class MoneyRepository
 		@Override protected Void doInBackground(Void... voids)
 		{
 			budgetTemplateDao.deleteAllBudgets();
+			return null;
+		}
+	}
+
+	private static class DeleteAllIncomeAsyncTask extends AsyncTask<Void, Void, Void>
+	{
+		private IncomeDao income;
+
+		public DeleteAllIncomeAsyncTask(IncomeDao income)
+		{
+			this.income = income;
+		}
+
+		@Override protected Void doInBackground(Void... voids)
+		{
+			income.deleteAllIncome();
 			return null;
 		}
 	}

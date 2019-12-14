@@ -9,6 +9,7 @@ import android.widget.Spinner;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.lifecycle.LiveData;
 
 import com.example.moneymoves.Database.Entities.Income;
 import com.example.moneymoves.Database.MoneyRepository;
@@ -26,15 +27,6 @@ public class IncomePage extends AppCompatActivity {
         setContentView(R.layout.activity_income_page);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-        FloatingActionButton fab = findViewById(R.id.addSpentButton);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
 
         repository = new MoneyRepository(this.getApplication());
     }
@@ -64,6 +56,8 @@ public class IncomePage extends AppCompatActivity {
                 break;
             default:
         }
+
+        repository.deleteAllIncome(); //delete the current income if there is already one in the database.
 
         Income income = new Income(amount);
 

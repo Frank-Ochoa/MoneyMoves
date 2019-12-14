@@ -10,4 +10,6 @@ import com.example.moneymoves.Database.Entities.Income;
 {
 
 	@Query("SELECT sum(SALARY) FROM INCOME") public abstract LiveData<Double> getIncome();
+
+	@Query("DELETE FROM INCOME") public abstract void deleteAllIncome();
 }

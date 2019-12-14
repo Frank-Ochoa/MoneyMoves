@@ -90,13 +90,13 @@ public class MainActivity extends AppCompatActivity {
                         if (spent == null)
                         {
                             bar.setProgress(income.intValue());
-                            x.setText(0.0 + "/" + income + " Spent");
+                            x.setText(0.0 + "/" + income + " Income");
                         }
                         else
                         {
 
                             bar.setProgress(income.intValue() - spent.intValue());
-                            x.setText(spent + "/" + income + " Spent");
+                            x.setText(spent + "/" + income + " Income");
                         }
                     }
                 });
@@ -123,4 +123,9 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void incomePage(View view)
+    {
+        Intent intent = new Intent(this, IncomePage.class);
+        startActivity(intent);
+    }
 }
