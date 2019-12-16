@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -40,30 +41,40 @@ public class IncomePage extends AppCompatActivity {
 
         Spinner spinner = findViewById(R.id.frequency);
         EditText editText = findViewById(R.id.income);
-        double amount = Double.valueOf(editText.getText().toString());
 
-        String frequency =  spinner.getSelectedItem().toString();
-
-        switch (frequency)
+        try
         {
-            case "Weekly":
-                amount = amount * 4;
-                System.out.println("WEEKLY :: " + amount);
-                break;
-            case "Biweekly":
-                amount = amount * 2;
-                System.out.println("Biweekly :: " + amount);
-                break;
-            default:
+            double amount = Double.valueOf(editText.getText().toString());
+
+            String frequency =  spinner.getSelectedItem().toString();
+
+            switch (frequency)
+            {
+                case "Weekly":
+                    amount = amount * 4;
+                    System.out.println("WEEKLY :: " + amount);
+                    break;
+                case "Biweekly":
+                    amount = amount * 2;
+                    System.out.println("Biweekly :: " + amount);
+                    break;
+                default:
+            }
+
+            repository.deleteAllIncome(); //delete the current income if there is already one in the database.
+
+            Income income = new Income(amount);
+
+            repository.insertIncome(income);
+
+            startActivity(intent);
+        }
+        catch (NumberFormatException E)
+        {
+            Toast.makeText(this, "Budget Not Saved", Toast.LENGTH_SHORT).show();
         }
 
-        repository.deleteAllIncome(); //delete the current income if there is already one in the database.
 
-        Income income = new Income(amount);
-
-        repository.insertIncome(income);
-
-        startActivity(intent);
     }
 
 }

@@ -47,18 +47,31 @@ public class AddSpentPage  extends AppCompatActivity {
         String note = noteTV.getText().toString();
 
         EditText amountTV = findViewById(R.id.spentAmount);
-        double amount = Double.valueOf(amountTV.getText().toString());
 
         Intent data = new Intent();
-        data.putExtra(EXTRA_NOTE, note);
-        data.putExtra(EXTRA_AMOUNT, amount);
 
-        int id = getIntent().getIntExtra(EXTRA_ID,-1);
+        try
+        {
+            double amount = Double.valueOf(amountTV.getText().toString());
 
-        if(id != -1){
-            data.putExtra(EXTRA_ID,id);
+            data.putExtra(EXTRA_NOTE, note);
+            data.putExtra(EXTRA_AMOUNT, amount);
+
+            int id = getIntent().getIntExtra(EXTRA_ID,-1);
+
+            if(id != -1){
+                data.putExtra(EXTRA_ID,id);
+            }
+            setResult(RESULT_OK, data);
         }
-        setResult(RESULT_OK, data);
-        finish();
+        catch(NumberFormatException E)
+        {
+            setResult(RESULT_CANCELED, data);
+        }
+        finally
+        {
+            finish();
+        }
+
     }
 }

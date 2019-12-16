@@ -44,19 +44,31 @@ public class AddExpensePage extends AppCompatActivity {
 		String category = categoryTV.getText().toString();
 
 		EditText amountTV = findViewById(R.id.spentAmount);
-		double amount = Double.valueOf(amountTV.getText().toString());
 
 		Intent data = new Intent();
-		data.putExtra(EXTRA_CATEGORY, category);
-		data.putExtra(EXTRA_AMOUNT, amount);
 
-		int id = getIntent().getIntExtra(EXTRA_ID,-1);
+		try {
+			double amount = Double.valueOf(amountTV.getText().toString());
+			data.putExtra(EXTRA_CATEGORY, category);
+			data.putExtra(EXTRA_AMOUNT, amount);
 
-		if(id != -1){
-			data.putExtra(EXTRA_ID,id);
+			int id = getIntent().getIntExtra(EXTRA_ID,-1);
+
+			if(id != -1){
+				data.putExtra(EXTRA_ID,id);
+			}
+			setResult(RESULT_OK, data);
 		}
-		setResult(RESULT_OK, data);
-		finish();
+		catch (NumberFormatException E)
+		{
+			setResult(RESULT_CANCELED, data);
+		}
+		finally
+		{
+			finish();
+		}
+
+
 
        /* MMDatabase dbHelper = new MMDatabase(this);
         dbHelper.insertBudgetRow(category, amount);
